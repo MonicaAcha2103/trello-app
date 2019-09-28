@@ -1,0 +1,38 @@
+.openForButtonGroup {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 3;
+  height: 36;
+  width: 102;
+  padding-left: 10px;
+}
+.formStyle {
+  resize: none;
+  width: 100%;
+  outline: none;
+  border: none;
+  padding: 8px;
+  // line-height: 1.2em;
+}
+.textAreaForm {
+  margin: 8px;
+  overflow: visible;
+  min-height: 80;
+  min-width: 272;
+  padding: 6px 8px 2px;
+}
+.AddButton {
+  color: white;
+  padding: 6px 8px 2px;
+  margin: 8px;
+}
+.closeCardButton {
+  margin-left: 0px;
+  cursor: pointer;
+}
+.formButtonGroup {
+  margin-top: 0px;
+  display: flex;
+  align-items: center;
+}

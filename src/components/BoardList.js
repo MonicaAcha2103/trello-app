@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Card, CardBody, CardTitle } from "reactstrap";
-import RemoveIcon from "./RemoveIcon";
+//import RemoveIcon from "./RemoveIcon";
 
 import { Link } from "react-router-dom";
 
@@ -9,17 +9,18 @@ const BoardList = props => (
   <div className="wrapper ">
     {props.board.map(board => {
       return (
-        <div>
-          <Link to={"/" + board.title} style={{ textDecoration: "none" }}>
-            <Card id={board.id} key={board.id} name="card">
-              <CardBody className="boardItem" id={board.id}>
-                <RemoveIcon id={board.id} />
-                <CardTitle id={board.id}>{board.title}</CardTitle>
-                <br />
-              </CardBody>
-            </Card>
-          </Link>
-        </div>
+        <Link
+          key={board.id}
+          to={"/" + board.title}
+          style={{ textDecoration: "none" }}
+        >
+          <Card id={board.id} key={board.id} name="card">
+            <CardBody id={board.id} className="boardItem">
+              <CardTitle id={board.id}>{board.title}</CardTitle>
+              <br />
+            </CardBody>
+          </Card>
+        </Link>
       );
     })}
   </div>
