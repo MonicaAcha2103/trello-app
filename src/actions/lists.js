@@ -3,6 +3,11 @@ export const addList = title => ({
   payload: title
 });
 
+export const deleteList = id => ({
+  type: "DELETE_LIST",
+  payload: id
+});
+
 export const sort = (
   droppableIdStart,
   droppableIdEnd,

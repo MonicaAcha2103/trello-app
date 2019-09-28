@@ -92,6 +92,22 @@ export default (state = listReducerDefaultState, action) => {
       }
       return newState;
     }
+    case "DELETE_LIST": {
+      return state.filter(({ id }) => id !== action.payload);
+    }
+    case "DELETE_CARD": {
+      //console.log(action.payload.id, action.payload.ListID);
+      let newState = state;
+      let index = newState.findIndex(item => item.id === action.payload.ListID);
+
+      newState[index].cards = newState[index].cards.filter(
+        ({ id }) => id !== action.payload.id
+      );
+
+      console.log(newState);
+      return newState;
+    }
+
     default:
       return state;
   }

@@ -9,9 +9,13 @@ import {
   Button
 } from "reactstrap";
 import { Draggable } from "react-beautiful-dnd";
-const Cards = ({ title, id, index }) => {
+import { connect } from "react-redux";
+import { deleteCard } from "../actions/card";
+import Delete from "@material-ui/icons/Delete";
+import EditIcon from "@material-ui/icons/Edit";
+const Cards = props => {
   return (
-    <Draggable draggableId={String(id)} index={index}>
+    <Draggable draggableId={String(props.id)} index={props.index}>
       {provided => (
         <div
           ref={provided.innerRef}
@@ -20,7 +24,33 @@ const Cards = ({ title, id, index }) => {
         >
           <Card className="cards">
             <CardBody>
-              <CardTitle>{title}</CardTitle>
+              <CardTitle>{props.title}</CardTitle>
+              <EditIcon
+                className="show-on-hover"
+                style={{
+                  fontSize: "16px",
+                  float: "right",
+                  marginTop: "2px",
+                  marginRight: "5px",
+                  cursor: "none"
+                }}
+              />
+              <Delete
+                className="show-on-hover"
+                style={{
+                  fontSize: "16px",
+                  float: "right",
+                  marginTop: "2px",
+                  marginRight: "5px",
+                  cursor: "default"
+                }}
+                isDragging={false}
+                onMouseDown={() => {
+                  let obj = { id: props.id, ListID: props.ListID };
+
+                  return props.deleteCard(obj);
+                }}
+              />
             </CardBody>
           </Card>
         </div>
@@ -29,6 +59,11 @@ const Cards = ({ title, id, index }) => {
   );
 };
 
-export default Cards;
+const mapDispatchToProps = {
+  deleteCard
+};
 
-//<CardTitle>{text}</CardTitle>
+export default connect(
+  null,
+  mapDispatchToProps
+)(Cards);

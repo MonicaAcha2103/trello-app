@@ -6,13 +6,30 @@
   height: 100%;
 }
 .listTitle {
-  font-size: 20px;
   padding-left: 9px;
   padding-top: 10px;
+  display: inline;
+  font-size: 2.3rem;
 }
 .boardName {
   font-size: 24px;
 }
+.DeleteIcon {
+  float: right;
+  font-size: 2.5rem;
+  margin-top: 8px;
+  margin-right: 7px;
+}
+.cards .show-on-hover {
+  display: none;
+  float: left;
+  margin: 5px;
+}
+
+.cards:hover .show-on-hover {
+  display: inline;
+}
+
 // .list-header {
 //   background: $off-white;
 //   border: 1px solid darken($off-white, 7%);
