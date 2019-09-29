@@ -88,14 +88,13 @@ class ActionButton extends React.Component {
         </Card>
 
         <div className="formButtonGroup">
-          {" "}
           <Button
             onMouseDown={list ? this.handleAddList : this.handleAddCard}
             color="primary"
             className="AddButton"
           >
             {buttonTitle}
-          </Button>{" "}
+          </Button>
           <Icon className="closeCardButton">close</Icon>
         </div>
       </div>

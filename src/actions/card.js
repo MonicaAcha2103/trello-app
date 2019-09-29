@@ -7,3 +7,8 @@ export const deleteCard = ({ id, ListID }) => ({
   type: "DELETE_CARD",
   payload: { id, ListID }
 });
+
+export const editCard = ({ text, ListID, id }) => ({
+  type: "EDIT_CARD",
+  payload: { text, ListID, id }
+});

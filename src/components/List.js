@@ -5,6 +5,7 @@ import { Droppable } from "react-beautiful-dnd";
 import Delete from "@material-ui/icons/Delete";
 import { deleteList, editList } from "../actions/lists";
 import { connect } from "react-redux";
+
 class List extends React.Component {
   constructor(props) {
     super(props);
@@ -13,6 +14,7 @@ class List extends React.Component {
 
   handleEditList = e => {
     this.setState({ setEdit: true });
+    this.render();
   };
 
   render() {
@@ -35,9 +37,12 @@ class List extends React.Component {
                         this.setState({ title: e.target.value });
                       }
                     }}
+                    onBlur={e => {
+                      this.props.editList(this.props.ListID, this.state.title);
+                      this.setState({ setEdit: false });
+                    }}
                     onKeyPress={event => {
                       if (event.key === "Enter") {
-                        console.log(this.state.title);
                         this.props.editList(
                           this.props.ListID,
                           this.state.title
@@ -57,10 +62,7 @@ class List extends React.Component {
                   marginTop: "2px",
                   marginRight: "5px"
                 }}
-                onClick={
-                  //console.log(ListID);ListID
-                  () => this.props.deleteList(this.props.ListID)
-                }
+                onClick={() => this.props.deleteList(this.props.ListID)}
               />
             </div>
 
@@ -92,16 +94,3 @@ export default connect(
   null,
   mapDispatchToProps
 )(List);
-
-// const mapStateToProps = state => {
-//   console.log("state updates");
-//   console.log(state.lists[0]);
-//   return {
-//     lists: state.lists
-//   };
-// };
-
-// export default connect(
-//   mapStateToProps,
-//   mapDispatchToProps
-// )(List);

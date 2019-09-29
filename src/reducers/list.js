@@ -102,22 +102,44 @@ export default (state = listReducerDefaultState, action) => {
       let index = newState.findIndex(item => item.id === ListID);
 
       state[index].title = newTitle;
-      console.log(state);
+
       return state;
     }
     case "DELETE_CARD": {
       const { ListID } = action.payload;
       const CardID = action.payload.id;
-      let newState = state;
+      let newState = [...state];
 
       let index = newState.findIndex(item => item.id === action.payload.ListID);
       newState[index].cards = newState[index].cards.filter(
         ({ id }) => id !== CardID
       );
-      // console.log(newState);
+
       return newState;
     }
+    case "EDIT_CARD": {
+      const { text, ListID, id } = action.payload;
 
+      let newState = [...state];
+
+      let cardid = id;
+      return state.map(item => {
+        if (item.id === ListID) {
+          return {
+            ...item,
+            cards: item.cards.map(card => {
+              if (card.id === cardid) {
+                return Object.assign({}, card, { title: text });
+                // card.title = text;
+              }
+              return card;
+            })
+          };
+        }
+
+        return item;
+      });
+    }
     default:
       return state;
   }

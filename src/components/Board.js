@@ -6,9 +6,11 @@ import { DragDropContext } from "react-beautiful-dnd";
 import { sort } from "../actions/lists";
 class Board extends Component {
   componentDidMount() {
-    // set active trello board here
-    var boardID = this.props.match.params.boardID;
+    // set active trello board
+
+    const { boardID } = this.props.match.params;
   }
+
   onDragEnd = result => {
     const { destination, source, draggableId } = result;
     if (!destination) {
@@ -24,13 +26,14 @@ class Board extends Component {
       )
     );
   };
+
   render() {
     const lists = this.props.lists;
 
     return (
       <DragDropContext onDragEnd={this.onDragEnd}>
         <div>
-          <h3 className="boardName"> Board Name</h3>
+          <h3 className="boardName"> {this.boardID}</h3>
           <div className="ListContainer">
             {lists.map(list => (
               <List
@@ -49,7 +52,6 @@ class Board extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log("board state updates");
   return {
     lists: state.lists
   };
