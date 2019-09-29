@@ -26,3 +26,13 @@ export const sort = (
     }
   };
 };
+
+export const editList = (ListID, newTitle) => {
+  return {
+    type: "EDIT_LIST",
+    payload: {
+      ListID,
+      newTitle
+    }
+  };
+};

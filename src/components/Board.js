@@ -49,6 +49,7 @@ class Board extends Component {
 }
 
 const mapStateToProps = state => {
+  console.log("board state updates");
   return {
     lists: state.lists
   };

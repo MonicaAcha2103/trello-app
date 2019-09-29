@@ -44,7 +44,6 @@ const Cards = props => {
                   marginRight: "5px",
                   cursor: "default"
                 }}
-                isDragging={false}
                 onMouseDown={() => {
                   let obj = { id: props.id, ListID: props.ListID };
 

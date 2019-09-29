@@ -95,16 +95,26 @@ export default (state = listReducerDefaultState, action) => {
     case "DELETE_LIST": {
       return state.filter(({ id }) => id !== action.payload);
     }
-    case "DELETE_CARD": {
-      //console.log(action.payload.id, action.payload.ListID);
+    case "EDIT_LIST": {
       let newState = state;
+      const { ListID, newTitle } = action.payload;
+
+      let index = newState.findIndex(item => item.id === ListID);
+
+      state[index].title = newTitle;
+      console.log(state);
+      return state;
+    }
+    case "DELETE_CARD": {
+      const { ListID } = action.payload;
+      const CardID = action.payload.id;
+      let newState = state;
+
       let index = newState.findIndex(item => item.id === action.payload.ListID);
-
       newState[index].cards = newState[index].cards.filter(
-        ({ id }) => id !== action.payload.id
+        ({ id }) => id !== CardID
       );
-
-      console.log(newState);
+      // console.log(newState);
       return newState;
     }
 
