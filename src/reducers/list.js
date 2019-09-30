@@ -1,43 +1,6 @@
 let listID = 2;
 let cardID = 6;
-const listReducerDefaultState = [
-  {
-    title: "title",
-    id: `list=${0}`,
-    cards: [
-      {
-        id: `card=${0}`,
-        title: "card 1"
-      },
-      {
-        id: `card=${1}`,
-        title: "card 2"
-      }
-    ]
-  },
-  {
-    title: "title",
-    id: `list=${1}`,
-    cards: [
-      {
-        id: `card=${2}`,
-        title: "card 1"
-      },
-      {
-        id: `card=${3}`,
-        title: "card 2"
-      },
-      {
-        id: `card=${4}`,
-        title: "card 3"
-      },
-      {
-        id: `card=${5}`,
-        title: "card 4"
-      }
-    ]
-  }
-];
+const listReducerDefaultState = [];
 export default (state = listReducerDefaultState, action) => {
   switch (action.type) {
     case "ADD_LIST": {

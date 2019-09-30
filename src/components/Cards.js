@@ -62,6 +62,7 @@ class Cards extends React.Component {
                     onBlur={this.closeForm}
                     value={this.state.text}
                     onChange={this.handleInputChange}
+                    placeholder={this.props.title}
                   />
                 </Card>
 
@@ -73,7 +74,6 @@ class Cards extends React.Component {
                   >
                     SAVE CARD
                   </Button>
-                  <Icon className="closeCardButton">close</Icon>
                 </div>
               </div>
             ) : (
